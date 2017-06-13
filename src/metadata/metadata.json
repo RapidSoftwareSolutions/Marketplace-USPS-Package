@@ -1,0 +1,259 @@
+{
+  "package": "USPS",
+  "tagline": "USPS API",
+  "description": "",
+  "image": "https://www.usps.com/global-elements/header/images/utility-header/logo-sb.svg",
+  "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-USPS-Package",
+  "keywords": [
+    "API",
+    "USPS",
+    "delivery"
+  ],
+  "accounts": {
+    "domain": "usps.com",
+    "credentials": [
+      "userId"
+    ]
+  },
+  "blocks": [
+    {
+      "name": "getDeliveryStatus",
+      "description": "Lets customers determine the delivery status of their Priority Mail, Express Mail, and Package Services.",
+      "args": [
+        {
+        "name": "userId",
+        "type": "credentials",
+        "info": "Your application's bitly client id.",
+        "required": true
+        },
+        {
+          "name": "trackId",
+          "type": "List",
+          "info": "List of track id.",
+          "required": true,
+          "structure": {
+            "name": "treckId",
+            "type": "String",
+            "info": "Track id."
+          }
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "setEmailForTrackingNotification",
+      "description": "Allows the customer to submit their email address to be notified of current or future tracking activity.",
+      "args": [
+        {
+        "name": "userId",
+        "type": "credentials",
+        "info": "Your application's bitly client id.",
+        "required": true
+        },
+        {
+          "name": "trackId",
+          "type": "String",
+          "info": "Must be alphanumeric characters.",
+          "required": true
+        },
+        {
+          "name": "clientIp",
+          "type": "String",
+          "info": "User IP address.",
+          "required": false
+        },
+        {
+          "name": "mpSuffix",
+          "type": "String",
+          "info": "MPSUFFIX value located in Track/Confirm Fields API response data. Unique to each TrackID.",
+          "required": true
+        },
+        {
+          "name": "mpDate",
+          "type": "String",
+          "info": "MPDATE value located in Track/Confirm Fields API response data. Unique to each TrackId.",
+          "required": true
+        },
+        {
+          "name": "requestType",
+          "type": "Select",
+          "options": ["EC","EN","EB","ED"],
+          "info": "Enter a notification request type from the choices available. 'EC' – (Email Current) Email all activity to-date. 'EN' – (Email New) Email all future tracking activity. 'EB' – (Email Both) Email both activity to-date and future tracking activity. 'ED' – E-Mail Delivery/Non Delivery activity",
+          "required": true
+        },
+        {
+          "name": "firstName",
+          "type": "String",
+          "info": "Recipient First Name.",
+          "required": false
+        },
+        {
+          "name": "lastName",
+          "type": "String",
+          "info": "Recipient Last Name.",
+          "required": false
+        }
+        ,{
+          "name": "email",
+          "type": "String",
+          "info": "Complete valid e-mail address.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getProofOfDeliveryNotification",
+      "description": "The Proof of Delivery API allows the customer to request proof of delivery notification via email.",
+      "args": [
+        {
+        "name": "userId",
+        "type": "credentials",
+        "info": "Your application's bitly client id.",
+        "required": true
+        },
+        {
+          "name": "trackId",
+          "type": "String",
+          "info": "Must be alphanumeric characters.",
+          "required": true
+        },
+        {
+          "name": "clientIp",
+          "type": "String",
+          "info": "User IP address.",
+          "required": false
+        },
+        {
+          "name": "mpSuffix",
+          "type": "String",
+          "info": "MPSUFFIX value located in Track/Confirm Fields API response data. Unique to each TrackID.",
+          "required": true
+        },
+        {
+          "name": "mpDate",
+          "type": "String",
+          "info": "MPDATE value located in Track/Confirm Fields API response data. Unique to each TrackId.",
+          "required": true
+        },
+        {
+          "name": "requestType",
+          "type": "Select",
+          "options": ["EC","EN","EB","ED"],
+          "info": "Enter a notification request type from the choices available. 'EC' – (Email Current) Email all activity to-date. 'EN' – (Email New) Email all future tracking activity. 'EB' – (Email Both) Email both activity to-date and future tracking activity. 'ED' – E-Mail Delivery/Non Delivery activity",
+          "required": true
+        },
+        {
+          "name": "firstName",
+          "type": "String",
+          "info": "Recipient First Name.",
+          "required": false
+        },
+        {
+          "name": "lastName",
+          "type": "String",
+          "info": "Recipient Last Name.",
+          "required": false
+        },
+        {
+          "name": "email",
+          "type": "String",
+          "info": "Complete valid e-mail address.",
+          "required": true
+        },
+        {
+          "name": "tableCode",
+          "type": "String",
+          "info": "Table Code value located in Track/Confirm Fields API response data. Unique to each TrackID.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getProofOfDeliveryCopy",
+      "description": "The Return Receipt Electronic API allows the customer to request a copy of the proof of delivery record via email.",
+      "args": [
+        {
+        "name": "userId",
+        "type": "credentials",
+        "info": "Your application's bitly client id.",
+        "required": true
+        },
+        {
+          "name": "trackId",
+          "type": "String",
+          "info": "Must be alphanumeric characters.",
+          "required": true
+        },
+        {
+          "name": "clientIp",
+          "type": "String",
+          "info": "User IP address.",
+          "required": false
+        },
+        {
+          "name": "mpSuffix",
+          "type": "String",
+          "info": "MPSUFFIX value located in Track/Confirm Fields API response data. Unique to each TrackID.",
+          "required": true
+        },
+        {
+          "name": "mpDate",
+          "type": "String",
+          "info": "MPDATE value located in Track/Confirm Fields API response data. Unique to each TrackId.",
+          "required": true
+        },
+        {
+          "name": "firstName",
+          "type": "String",
+          "info": "Recipient First Name.",
+          "required": false
+        },
+        {
+          "name": "lastName",
+          "type": "String",
+          "info": "Recipient Last Name.",
+          "required": false
+        },
+        {
+          "name": "email",
+          "type": "String",
+          "info": "Complete valid e-mail address.",
+          "required": true
+        },
+        {
+          "name": "tableCode",
+          "type": "String",
+          "info": "Table Code value located in Track/Confirm Fields API response data. Unique to each TrackID.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    }
+  ]
+}
